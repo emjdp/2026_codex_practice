@@ -1,0 +1,135 @@
+.wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-md);
+  padding-top: var(--space-lg);
+  overflow: visible;
+}
+
+.confettiContainer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  overflow: visible;
+  z-index: 100;
+}
+
+.confetti {
+  position: absolute;
+  animation: confettiRain 1.6s cubic-bezier(0.4, 0, 0.6, 1) forwards;
+}
+
+@keyframes confettiRain {
+  0% {
+    transform: translateX(0) translateY(0) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(var(--vx, 60px)) translateY(var(--vy, 120px)) rotate(540deg);
+    opacity: 0;
+  }
+}
+
+.sectionLabel {
+  font-family: var(--font-body);
+  font-size: var(--text-caption-upper);
+  font-weight: 500;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+
+.buttons {
+  display: flex;
+  gap: var(--space-md);
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+/* Base button */
+.btn {
+  font-family: var(--font-body);
+  font-size: 15px;
+  font-weight: 500;
+  border: none;
+  cursor: pointer;
+  padding: 14px 40px;
+  border-radius: var(--rounded-pill);
+  transition:
+    transform var(--transition-base),
+    box-shadow var(--transition-base),
+    background-color var(--transition-base);
+  min-width: 140px;
+  letter-spacing: 0.3px;
+}
+
+.btn:hover:not(:disabled) {
+  transform: translateY(-3px);
+}
+
+.btn:active:not(:disabled) {
+  transform: translateY(0px);
+}
+
+.btn:disabled {
+  cursor: default;
+  opacity: 0.9;
+}
+
+/* 승인 — green */
+.btnApprove {
+  background: #4a7c59;
+  color: #fff;
+  box-shadow: 0 4px 20px rgba(74,124,89,0.35);
+}
+
+.btnApprove:hover:not(:disabled) {
+  background: #3d6b4a;
+  box-shadow: 0 8px 32px rgba(74,124,89,0.45);
+}
+
+.btnApprove:active:not(:disabled) {
+  background: #335c3e;
+  box-shadow: 0 2px 8px rgba(74,124,89,0.3);
+}
+
+/* 수락 — coral (same action, different label) */
+.btnAccept {
+  background: var(--color-primary);
+  color: var(--color-on-primary);
+  box-shadow: 0 4px 20px rgba(204,120,92,0.35);
+}
+
+.btnAccept:hover:not(:disabled) {
+  background: var(--color-primary-active);
+  box-shadow: 0 8px 32px rgba(204,120,92,0.45);
+}
+
+.btnAccept:active:not(:disabled) {
+  background: #8a4830;
+  box-shadow: 0 2px 8px rgba(204,120,92,0.3);
+}
+
+/* Microcopy */
+.microcopy {
+  font-family: var(--font-body);
+  font-size: 12px;
+  color: var(--color-muted-soft);
+  text-align: center;
+  max-width: 360px;
+}
+
+.microcopyEn {
+  font-style: italic;
+  color: var(--color-primary-disabled);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .btn { transition: none; }
+  .confetti { animation: none; }
+}

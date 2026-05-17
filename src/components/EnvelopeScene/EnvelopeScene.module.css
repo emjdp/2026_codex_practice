@@ -1,0 +1,258 @@
+/* ============================================================
+   ENVELOPE SCENE
+   ============================================================ */
+
+/* Tall scroll container — 3× viewport height */
+.scrollContainer {
+  height: 300vh;
+  position: relative;
+}
+
+/* Sticky panel that animates */
+.sticky {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: var(--color-canvas);
+}
+
+/* Blobs */
+.blobA {
+  position: absolute;
+  top: -15%;
+  right: -10%;
+  width: 520px;
+  height: 520px;
+  background: radial-gradient(circle, rgba(204,120,92,0.09) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.blobB {
+  position: absolute;
+  bottom: -15%;
+  left: -10%;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(93,184,166,0.07) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+/* ===== ENVELOPE GROUP ===== */
+.envelopeGroup {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* ===== ENVELOPE ===== */
+.envelope {
+  position: relative;
+  width: 400px;
+  height: 280px;
+  perspective: 1400px;
+  perspective-origin: center 40%;
+  filter: drop-shadow(0 20px 48px rgba(20,20,19,0.13));
+}
+
+@media (max-width: 480px) {
+  .envelope {
+    width: 300px;
+    height: 210px;
+  }
+}
+
+/* Envelope body */
+.envelopeBody {
+  position: absolute;
+  inset: 0;
+  background: var(--color-surface-card);
+  border-radius: var(--rounded-lg);
+  border: 1px solid var(--color-hairline);
+  overflow: hidden;
+  z-index: 1;
+}
+
+/* Left fold triangle */
+.foldLeft {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 0 0 150px 200px;
+  border-color: transparent transparent var(--color-surface-cream-strong) transparent;
+  z-index: 2;
+}
+
+/* Right fold triangle */
+.foldRight {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 0 200px 150px 0;
+  border-color: transparent var(--color-surface-cream-strong) transparent transparent;
+  z-index: 2;
+}
+
+/* Bottom center triangle */
+.foldBottom {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 0 90px 90px 90px;
+  border-color: transparent transparent var(--color-surface-soft) transparent;
+  z-index: 3;
+}
+
+/* Wax seal */
+.waxSeal {
+  position: absolute;
+  bottom: 76px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  filter: drop-shadow(0 2px 10px rgba(204,120,92,0.45));
+}
+
+/* Paper */
+.paper {
+  position: absolute;
+  bottom: 16px;
+  left: 50%;
+  width: 74%;
+  height: 200px;
+  margin-left: -37%;
+  z-index: 4;
+  transform-origin: center bottom;
+}
+
+.paperContent {
+  width: 100%;
+  height: 100%;
+  background: #fff;
+  border-radius: var(--rounded-md) var(--rounded-md) 0 0;
+  padding: var(--space-md);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  box-shadow: 0 -4px 20px rgba(20,20,19,0.07);
+}
+
+.paperLine {
+  height: 7px;
+  background: var(--color-hairline);
+  border-radius: var(--rounded-xs);
+  width: 80%;
+}
+
+/* ===== FLAP ===== */
+.flapContainer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 52%;
+  transform-origin: top center;
+  transform-style: preserve-3d;
+  z-index: 20;
+}
+
+.flap {
+  position: absolute;
+  inset: 0;
+  clip-path: polygon(0 0, 100% 0, 50% 100%);
+  background: linear-gradient(
+    165deg,
+    var(--color-surface-soft) 0%,
+    var(--color-surface-cream-strong) 100%
+  );
+  border-top: 1px solid var(--color-hairline);
+  border-radius: var(--rounded-lg) var(--rounded-lg) 0 0;
+}
+
+/* ===== OPEN CTA ===== */
+.openCta {
+  position: absolute;
+  bottom: 15%;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-sm);
+  white-space: nowrap;
+}
+
+.openCtaHint {
+  font-family: var(--font-korean);
+  font-size: var(--text-body-sm);
+  color: var(--color-muted);
+  letter-spacing: 0.3px;
+}
+
+.openBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-sm);
+  font-family: var(--font-body);
+  font-size: var(--text-button);
+  font-weight: 500;
+  padding: 12px 24px;
+  border-radius: var(--rounded-pill);
+  border: none;
+  background: var(--color-primary);
+  color: var(--color-on-primary);
+  cursor: pointer;
+  box-shadow: 0 4px 20px rgba(204,120,92,0.35);
+  transition: transform var(--transition-base), box-shadow var(--transition-base), background var(--transition-base);
+}
+
+.openBtn:hover {
+  background: var(--color-primary-active);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(204,120,92,0.4);
+}
+
+.openBtn:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 8px rgba(204,120,92,0.3);
+}
+
+.openBtnArrow {
+  display: inline-block;
+  transition: transform var(--transition-base);
+}
+
+.openBtn:hover .openBtnArrow {
+  transform: translateX(3px);
+}
+
+/* ===== SCROLL INDICATOR ===== */
+.indicatorWrapper {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .flap { transition: none; }
+  .paper { transition: none; }
+}
