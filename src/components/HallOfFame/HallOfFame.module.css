@@ -437,19 +437,26 @@
   z-index: 200;
 }
 
-.modal {
+/* Centering wrapper — flexbox handles centering so Framer Motion transforms don't conflict */
+.modalWrapper {
   position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: min(560px, 92vw);
-  max-height: 85vh;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 201;
+  pointer-events: none;
+}
+
+.modal {
+  width: min(720px, 92vw);
+  max-height: 90vh;
   overflow-y: auto;
   border-radius: var(--rounded-xl);
   background: var(--color-surface-dark-elevated);
   border: 1px solid rgba(255,255,255,0.1);
-  z-index: 201;
   box-shadow: 0 24px 80px rgba(0,0,0,0.5);
+  pointer-events: all;
 }
 
 .modalHeader {

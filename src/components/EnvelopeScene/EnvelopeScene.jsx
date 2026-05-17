@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import { useRef, useEffect } from 'react';
 import {
   motion,
   useScroll,
@@ -34,6 +34,23 @@ export default function EnvelopeScene({ onOpen }) {
 
   // Scroll indicator fades out early
   const indicatorOpacity = useTransform(scrollYProgress, [0, 0.12], [1, 0]);
+
+  // Lock scroll when button is fully visible — body overflow is most reliable across browsers/iOS
+  useEffect(() => {
+    let locked = false;
+
+    const unsubscribe = scrollYProgress.on('change', (latest) => {
+      if (latest >= 0.85 && !locked) {
+        locked = true;
+        document.body.style.overflow = 'hidden';
+      }
+    });
+
+    return () => {
+      unsubscribe();
+      document.body.style.overflow = '';
+    };
+  }, [scrollYProgress]);
 
   return (
     <section

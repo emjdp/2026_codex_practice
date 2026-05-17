@@ -186,16 +186,18 @@
 }
 
 /* ===== OPEN CTA ===== */
+/* position: fixed ensures the button stays in the viewport regardless of scroll/sticky behaviour */
 .openCta {
-  position: absolute;
+  position: fixed;
   bottom: 15%;
-  left: 50%;
-  transform: translateX(-50%);
+  left: 0;
+  right: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: var(--space-sm);
   white-space: nowrap;
+  z-index: 10;
 }
 
 .openCtaHint {

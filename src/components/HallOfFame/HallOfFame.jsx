@@ -53,17 +53,6 @@ export default function HallOfFame() {
 
       <div className={styles.container}>
 
-        {/* Approved banner */}
-        <motion.div
-          className={styles.approvedBanner}
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ delay: 0.1, duration: 0.5 }}
-        >
-          <span className={styles.approvedDot} />
-          <span>Sponsorship Activated</span>
-        </motion.div>
-
         {/* Header */}
         <motion.div
           className={styles.header}

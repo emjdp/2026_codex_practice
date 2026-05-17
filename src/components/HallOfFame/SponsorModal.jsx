@@ -23,7 +23,8 @@ export default function SponsorModal({ sponsor, onClose }) {
         aria-hidden="true"
       />
 
-      {/* Modal */}
+      {/* Modal — centering wrapper keeps Framer Motion transforms from overriding translate(-50%,-50%) */}
+      <div className={styles.modalWrapper}>
       <motion.div
         role="dialog"
         aria-modal="true"
@@ -119,6 +120,7 @@ export default function SponsorModal({ sponsor, onClose }) {
           </div>
         </div>
       </motion.div>
+      </div>
     </>
   );
 }
