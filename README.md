@@ -2,6 +2,8 @@
 
 > 선배의 밥약을 벤처 투자로 재해석한 풍자 인터랙티브 웹사이트
 
+**[🔗 라이브 보기 → emjdp.github.io/2026_codex_practice](https://emjdp.github.io/2026_codex_practice/)**
+
 [![React](https://img.shields.io/badge/React-19-61dafb?style=flat-square&logo=react)](https://react.dev)
 [![Framer Motion](https://img.shields.io/badge/Framer_Motion-12-ff4154?style=flat-square)](https://www.framer.com/motion)
 [![Vite](https://img.shields.io/badge/Vite-8-646cff?style=flat-square&logo=vite)](https://vite.dev)
